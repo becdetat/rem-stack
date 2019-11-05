@@ -1,18 +1,49 @@
 {
-  "name": "microservice-thing",
+  "name": "rem-stack",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Your Name Here",
+    "email": "you@example.com",
+    "url": "https://example.com"
+  },
+  "build": {
+    "appId": "com.becdetat.rem-stack",
+    "productName": "REM Stack",
+    "copyright": "Copyright © 2019 Your Name Here",
+    "mac": {
+      "category": "public.app-category.utilities"
+    },
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
+  },
   "dependencies": {
+    "@material-ui/core": "^4.5.2",
+    "@material-ui/icons": "^4.5.1",
+    "@rauschma/stringio": "^1.4.0",
+    "electron-is-dev": "^1.1.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
-    "react-scripts": "3.2.0"
+    "react-scripts": "3.2.0",
+    "typeface-roboto": "0.0.75"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "rescripts start",
+    "build": "rescripts build",
+    "test": "rescripts test",
+    "eject": "react-scripts eject",
+    "electron-dev": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
+    "postinstall": "electron-builder install-app-deps",
+    "preelectron-pack": "yarn build",
+    "electron-pack": "build -mw"
   },
+  "main": "public/electron.js",
+  "homepage": "./",
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -27,5 +58,14 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@rescripts/cli": "^0.0.13",
+    "@rescripts/rescript-env": "^0.0.11",
+    "concurrently": "^5.0.0",
+    "electron": "^7.0.0",
+    "electron-builder": "^21.2.0",
+    "typescript": "^3.6.4",
+    "wait-on": "^3.3.0"
   }
 }
